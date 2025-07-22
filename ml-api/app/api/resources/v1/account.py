@@ -14,6 +14,8 @@ router = APIRouter()
 @router.post("/login/access-token", response_model = account_entity.Token)
 def login_access_token( 
     # db_session: Session = Depends(get_db),
+    #OAuth2PasswordRequestForm: Call the OAuth2PasswordRequestForm first and then checking it through Depends
+    
     form_data: OAuth2PasswordRequestForm = Depends(OAuth2PasswordRequestForm)
 ):
     if form_data.username != config.USER or form_data.password != config.PASSWORD:
